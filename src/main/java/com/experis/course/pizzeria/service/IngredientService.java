@@ -23,7 +23,7 @@ public class IngredientService {
         if (ingredientRepository.existsByName(ingredient.getName())) {
             throw new IngredientNameUniqueException(ingredient.getName());
         }
-        ingredient.setName(ingredient.getName());
+        ingredient.setName(ingredient.getName().toLowerCase());
         return ingredientRepository.save(ingredient);
     }
 

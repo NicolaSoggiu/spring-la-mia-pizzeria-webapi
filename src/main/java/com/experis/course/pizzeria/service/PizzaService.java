@@ -5,6 +5,8 @@ import com.experis.course.pizzeria.exception.PizzaNotFoundException;
 import com.experis.course.pizzeria.model.Pizza;
 import com.experis.course.pizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,10 @@ public class PizzaService {
         } else {
             return pizzaRepository.findAll();
         }
+    }
+
+    public List<Pizza> getPizzaList() {
+        return pizzaRepository.findAll();
     }
 
     public Pizza getPizzaById(Integer id) throws PizzaNotFoundException {
@@ -43,6 +49,7 @@ public class PizzaService {
 
     public Pizza editPizza(Pizza pizza) throws PizzaNotFoundException {
         Pizza pizzaToEdit = getPizzaById(pizza.getId());
+
         pizzaToEdit.setName(pizza.getName());
         pizzaToEdit.setDescription(pizza.getDescription());
         pizzaToEdit.setImage(pizza.getImage());
@@ -54,5 +61,13 @@ public class PizzaService {
 
     public void deletePizza(Integer id) {
         pizzaRepository.deleteById(id);
+    }
+
+    public Page<Pizza> getPizza(Pageable pageable) {
+        return pizzaRepository.findAll(pageable);
+    }
+
+    public Page<Pizza> getPage(Pageable pageable) {
+        return pizzaRepository.findAll(pageable);
     }
 }

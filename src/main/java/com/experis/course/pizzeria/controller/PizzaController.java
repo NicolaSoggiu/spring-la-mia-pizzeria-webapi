@@ -77,7 +77,7 @@ public class PizzaController {
         try {
             model.addAttribute("pizza", pizzaService.getPizzaById(id));
             model.addAttribute("ingredientList", ingredientService.getAll());
-            return "pizzas/form";
+            return "/pizzas/form";
         } catch (PizzaNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
@@ -87,7 +87,7 @@ public class PizzaController {
     public String doEdit(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("ingredientList", ingredientService.getAll());
-            return "pizzas/form";
+            return "/pizzas/form";
         }
         try {
             Pizza savedPizza = pizzaService.editPizza(formPizza);

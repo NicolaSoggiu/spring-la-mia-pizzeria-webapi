@@ -4,6 +4,14 @@ INSERT INTO pizzas (name, description, image, price) VALUES ("Funghi", "Pomodoro
 INSERT INTO pizzas (name, description, image, price) VALUES ("Crudo", "Pomodoro, mozzarella, crudo", "https://www.petitchef.it/imgupl/recipe/pizza-al-prosciutto-crudo--450186p695926.jpg", 6.50);
 INSERT INTO pizzas (name, description, image, price) VALUES ("Rucola", "Pomodoro, mozzarella, rucola", "https://blog.giallozafferano.it/coloriesaporiincucina/wp-content/uploads/2021/01/pizza-con-speck-e-rucola.jpg", 7.00);
 INSERT INTO pizzas (name, description, image, price) VALUES ("Diavola", "Pomodoro, mozzarella, salsiccia piccante", "https://pizzeriavesuviana.pl/wp-content/uploads/2021/09/Nowosc-Pizza-Salsiccia-Piccante.jpg", 7.00);
+INSERT INTO pizzas (name, description, image, price) VALUES ("Patatine fritte", "Pomodoro, mozzarella, patatine fritte", "https://pizzeriavesuviana.pl/wp-content/uploads/2021/09/Nowosc-Pizza-Salsiccia-Piccante.jpg", 7.00);
+INSERT INTO pizzas (name, description, image, price) VALUES ("Quattro formaggi", "Pomodoro, mozzarella, gorgonzola, grana, taleggio", "https://pizzeriavesuviana.pl/wp-content/uploads/2021/09/Nowosc-Pizza-Salsiccia-Piccante.jpg", 7.00);
+INSERT INTO pizzas (name, description, image, price) VALUES ("Sarda", "Pomodoro, mozzarella, salsiccia piccante, patate al forno", "https://pizzeriavesuviana.pl/wp-content/uploads/2021/09/Nowosc-Pizza-Salsiccia-Piccante.jpg", 7.00);
+INSERT INTO pizzas (name, description, image, price) VALUES ("Veneziana", "Pomodoro, mozzarella, prosciutto, funghi", "https://pizzeriavesuviana.pl/wp-content/uploads/2021/09/Nowosc-Pizza-Salsiccia-Piccante.jpg", 7.00);
+INSERT INTO pizzas (name, description, image, price) VALUES ("Fiori di zucca", "Pomodoro, mozzarella, fiori di zucca", "https://pizzeriavesuviana.pl/wp-content/uploads/2021/09/Nowosc-Pizza-Salsiccia-Piccante.jpg", 7.00);
+INSERT INTO pizzas (name, description, image, price) VALUES ("Panna e salmone", "Pomodoro, mozzarella, panna, salmone", "https://pizzeriavesuviana.pl/wp-content/uploads/2021/09/Nowosc-Pizza-Salsiccia-Piccante.jpg", 7.00);
+
+
 
 INSERT INTO ingredients(name) VALUES("pomodoro");
 INSERT INTO ingredients(name) VALUES("mozzarella");
@@ -14,6 +22,9 @@ INSERT INTO ingredients(name) VALUES("patate");
 INSERT INTO ingredients(name) VALUES("rucola");
 INSERT INTO ingredients(name) VALUES("crudo");
 INSERT INTO ingredients(name) VALUES("funghi");
+
+INSERT INTO pizzas_ingredients(pizza_id, ingredients_id) VALUES(1,1);
+INSERT INTO pizzas_ingredients(pizza_id, ingredients_id) VALUES(1,3);
 
 
 INSERT INTO roles (id, name) VALUES(1, 'ADMIN');

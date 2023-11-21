@@ -1,5 +1,6 @@
 package com.experis.course.pizzeria.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
@@ -39,7 +40,8 @@ public class Pizza {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "pizza")
+    @OneToMany(mappedBy = "pizza", orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Offer> offers = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
