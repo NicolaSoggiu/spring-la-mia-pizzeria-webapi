@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="topNavbar(area)" class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/pizzas}">Pizza's</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" th:classAppend="${area == 'books' ? 'active' : ''}"
+                       th:href="@{/users}">Users</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" th:classAppend="${area == 'aboutUs' ? 'active' : ''}"
+                       th:href="@{/ingredients}">Ingredients</a>
+                </li>
+            </ul>
+            <div class="text-light">
+                Hi <span sec:authentication="name"></span>
+                <a th:href="@{/logout}" class="btn btn-light">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/resources :: headResources('Users')"></head>
+<body>
+<nav th:replace="fragments/navbar :: topNavbar('Users')"></nav>
+<div class="container">
+    <div th:replace="fragments/components :: message"></div>
+    <h1 class="my-3">Users</h1>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:insert="fragments/resources :: headResources('Pizza Details')"></head>
+<body>
+<nav th:replace="fragments/navbar :: topNavbar('pizzas')"></nav>
+<div class="container" th:object="${pizza}">
+    <div class="col-md-4 my-5">
+        <h1 th:text="*{name}"></h1>
+        <div class="card h-100" style="width: 18rem;">
+            <img th:src="*{image}" alt="Pizza Image" class="card-img-top img-fluid h-50">
+            <div class="card-body">
+                <h5 th:text="*{name}" class="card-title"></h5>
+                <p th:text="*{description}" class="card-text"></p>
+                <span th:text="'€ ' + *{price}"></span>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <h3>Ingredient</h3>
+        <ul class="list-group">
+            <li th:each="ingredient : ${pizza.ingredients}" class="list-group-item" th:text="${ingredient.name}"></li>
+        </ul>
+    </section>
+
+    <h2>Offerte attive
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/offers/create(pizzaId=${pizza.id})}">
+            <i class="fa-solid fa-circle-plus"></i>
+        </a>
+    </h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Offer Title</th>
+            <th>Start offer</th>
+            <th>End offer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="offer : ${pizza.offers}" th:object="${offer}">
+            <td th:text="${offer.title}"></td>
+            <td th:text="${offer.startDate}"></td>
+            <td th:text="${offer.endDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if="*{offers.size() == 0}" class="alert alert-info">The list is empty</div>
+
+    <div class="mt-2">
+        <a th:href="@{/pizzas}" class="btn btn-primary">Back to list</a>
+    </div>
+</div>
+</body>
+</html>
