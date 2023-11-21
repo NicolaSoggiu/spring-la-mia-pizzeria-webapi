@@ -33,11 +33,15 @@
 
         <div class="col-4">
             <h4>Ingredients</h4>
-            <div th:each="ingredient : ${ingredientList}">
-                <input type="checkbox" th:id="${'ingredient-' + ingredient.id}" th:name="ingredients"
-                       th:value="${ingredient.id}"
-                       th:checked="${pizza.ingredients != null and #lists.contains(pizza.ingredients, ingredient.id)}">
-                <label th:for="${'ingredient-' + ingredient.id}" th:text="${ingredient.name}"></label>
+            <div class="form-check" th:each="ingredient : ${ingredientList}">
+                <input
+                        class="form-check-input"
+                        type="checkbox"
+                        th:value="${ingredient.id}"
+                        th:id="${'ingredient-' + ingredient.id}"
+                        th:field="${pizza.ingredients}">
+                <label class="form-check-label" th:for="${'ingredient-' + ingredient.id}"
+                       th:text="${ingredient.name}"></label>
             </div>
         </div>
 
